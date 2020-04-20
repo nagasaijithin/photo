@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
-
+import { init } from "./actions";
+import { connect } from "react-redux";
 ////main page components
 import HomePage from "./pages/homepage";
 
 /// components
 import NavBar from "./components/nav.component";
-function App() {
+function App({ init }) {
+  useEffect(() => {
+    // init();
+  }, []);
   return (
     <div>
       <NavBar />
@@ -14,5 +18,9 @@ function App() {
     </div>
   );
 }
-
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+export default connect(mapStateToProps, { init })(App);

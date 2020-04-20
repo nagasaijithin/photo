@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { TimelineLite, Power3 } from "gsap";
 const Nav = styled.nav`
-  max-width: 150rem;
+  max-width: ${(props) => props.theme.continer};
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

@@ -4,15 +4,20 @@ import App from "./App";
 import { store } from "./store";
 import { Router } from "react-router-dom";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "styled-components";
+
 import history from "./history";
+import theme from "./style/themeprovider";
 import { GlobalStyle } from "./style/globalstyles";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <GlobalStyle />
-      <App />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <App />
+      </ThemeProvider>
     </Router>
   </Provider>,
   document.getElementById("root")
