@@ -26,7 +26,7 @@ const UserWapper = styled.div`
   & div:last-child {
     height: 61%;
     padding: 0.5rem;
-    background-color: #e8e7e7;
+    background-color: ${(props) => props.theme.downbackcolor};
     border-radius: 4px;
     & img {
       height: 100%;

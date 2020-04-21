@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { init } from "./actions";
 import { connect } from "react-redux";
 ////main page components
@@ -14,7 +14,12 @@ function App({ init }) {
   return (
     <div>
       <NavBar />
-      <Route path="/" exact component={HomePage} />
+      <Route
+        path="/"
+        exact
+        render={() => <Redirect from={"/"} to={"/latestimages/:id"} />}
+      />
+      <Route path="/latestimages/:id" exact component={HomePage} />
     </div>
   );
 }
