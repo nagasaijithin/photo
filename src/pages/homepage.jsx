@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import Allimage from "../components/allimages.component";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
+import { init } from "../actions";
+import Allimage from "../components/allimages.component";
 import Pagebar from "../components/pagebar.component";
 const HomepageContiner = styled.div`
   max-width: ${(props) => props.theme.continer};
   margin: 0 auto;
   padding: 3rem;
 `;
-const HomePage = ({ history, match }) => {
+const HomePage = ({ init, match }) => {
   useEffect(() => {
-    let num = match.params.id === "1" ? "1" : match.params.id;
-    history.push(`/latestimages/${num}`);
-  }, [history]);
+    init(Number(match.params.id));
+  }, []);
   return (
     <HomepageContiner>
       <h1>Latest images</h1>
@@ -21,4 +23,9 @@ const HomePage = ({ history, match }) => {
     </HomepageContiner>
   );
 };
-export default HomePage;
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+export default connect(mapStateToProps, { init })(withRouter(HomePage));

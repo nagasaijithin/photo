@@ -30,8 +30,6 @@ const Allimageslist = ({ images }) => {
 };
 
 const Allimage = ({ images }) => {
-  console.log(images);
-
   return (
     <CardItemsWapper>
       <Allimageslist images={images} />

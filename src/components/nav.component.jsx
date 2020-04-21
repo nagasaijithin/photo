@@ -2,6 +2,9 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { TimelineLite, Power3 } from "gsap";
+
+import search from "../assets/search.svg";
+import Input from "./input.component";
 const Nav = styled.nav`
   max-width: ${(props) => props.theme.continer};
   margin: 0 auto;
@@ -13,10 +16,6 @@ const Nav = styled.nav`
   & a {
     text-decoration: none;
     color: black;
-  }
-  & div {
-    transform: rotate(90deg);
-    cursor: pointer;
   }
 `;
 const NavListWapper = styled.div`
@@ -46,7 +45,16 @@ const NavListWapper = styled.div`
     }
   }
 `;
-
+const Handbar = styled.div`
+  transform: rotate(90deg);
+  cursor: pointer;
+`;
+const SearchandhandelbarWapper = styled.div`
+  display: flex;
+  & > * {
+    margin: 0 2rem;
+  }
+`;
 ////////////////////////////////////////////////////////////
 //////////////////// Nav Animation
 /////////////////////////////////////////////////
@@ -112,7 +120,12 @@ const NavBar = () => {
       </NavListWapper>
       <Nav>
         <Link to="/">Logo</Link>
-        <div onClick={() => navAnimation(nlwel, nlwulel)}>|||</div>
+        <SearchandhandelbarWapper>
+          <Input type="search">
+            <img src={search} alt="Search" />
+          </Input>
+          <Handbar onClick={() => navAnimation(nlwel, nlwulel)}>|||</Handbar>
+        </SearchandhandelbarWapper>
       </Nav>
     </>
   );

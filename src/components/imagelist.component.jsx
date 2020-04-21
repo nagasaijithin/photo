@@ -50,7 +50,10 @@ const Imagelist = (props) => {
   let icel = useRef(null);
 
   useEffect(() => {
-    icel.style.gridRowEnd = `span ${Math.ceil(iel.height / 10 + 6)}`;
+    let continer = icel;
+    iel.addEventListener("load", (e) => {
+      continer.style.gridRowEnd = `span ${Math.ceil(e.target.height / 10 + 6)}`;
+    });
     setstate(iel.width);
   }, [iel, icel]);
   return (
