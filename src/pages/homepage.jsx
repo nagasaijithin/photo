@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { init } from "../actions";
+import Title from "../components/title.component";
 import Allimage from "../components/allimages.component";
 import Pagebar from "../components/pagebar.component";
 
@@ -12,9 +13,9 @@ const HomePage = ({ init, match }) => {
   }, []);
   return (
     <>
-      <h1>Latest images</h1>
+      <Title title="Latest images" />
       <Allimage />
-      <Pagebar />
+      <Pagebar pagebartype="initbar" />
     </>
   );
 };

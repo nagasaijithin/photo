@@ -37,6 +37,12 @@ const UserWapper = styled.div`
 const MainWapper = styled.div`
   text-align: center;
   width: 100%;
+  & > img {
+    transition: all 2s ease-in;
+    &:hover {
+      filter: grayscale(60%);
+    }
+  }
 `;
 
 ///////////////////////////////////////////////
