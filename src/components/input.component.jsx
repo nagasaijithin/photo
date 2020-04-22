@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import history from "../history";
+import { connect } from "react-redux";
+import { searchImag } from "../actions";
 const Form = styled.form`
   height: 100%;
   display: flex;
@@ -17,11 +20,29 @@ const Form = styled.form`
     width: 3.5rem;
     padding: 0 0.5rem;
   }
+  & > button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+  }
 `;
-const Input = ({ type, children }) => {
+
+const formHandler = (e, searchImag, setState) => {
+  e.preventDefault();
+  e.persist();
+  let userValue = e.target.firstElementChild.value;
+  if (userValue !== "") {
+    searchImag(userValue, 1);
+    history.push(`/search/${userValue}/1`);
+    setState("");
+  }
+};
+
+const Input = ({ type, children, searchImag }) => {
   const [state, setState] = useState("");
+
   return (
-    <Form>
+    <Form onSubmit={(e) => formHandler(e, searchImag, setState)}>
       <input
         type={type}
         placeholder="Search free images"
@@ -30,9 +51,13 @@ const Input = ({ type, children }) => {
           setState(e.target.value);
         }}
       />
-      {children && children}
+      {children && <button>{children}</button>}
     </Form>
   );
 };
-
-export default Input;
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+export default connect(mapStateToProps, { searchImag })(Input);

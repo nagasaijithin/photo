@@ -13,18 +13,19 @@ const CardItemsWapper = styled.div`
 `;
 
 const Allimageslist = ({ images }) => {
+  let imageslist =
+    images.length > 1 ? images : images.results ? images.results : [];
   return (
     <>
-      {images.length > 1 &&
-        images.map(({ urls, id, alt_description, user, links }) => (
-          <Imagelist
-            key={id}
-            url={urls.thumb}
-            user={user}
-            alt={alt_description}
-            dimg={links.download}
-          />
-        ))}
+      {imageslist.map(({ urls, id, alt_description, user, links }) => (
+        <Imagelist
+          key={id}
+          url={urls.thumb}
+          user={user}
+          alt={alt_description}
+          dimg={links.download}
+        />
+      ))}
     </>
   );
 };
