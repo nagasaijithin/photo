@@ -13,8 +13,14 @@ const CardItemsWapper = styled.div`
 `;
 
 const Allimageslist = ({ images }) => {
+  console.log(images);
   let imageslist =
-    images.length > 1 ? images : images.results ? images.results : [];
+    images.length > 1 && images[0].urls
+      ? images
+      : images.results
+      ? images.results
+      : [];
+  console.log(imageslist);
   return (
     <>
       {imageslist.map(({ urls, id, alt_description, user, links }) => (
@@ -31,6 +37,7 @@ const Allimageslist = ({ images }) => {
 };
 
 const Allimage = ({ images }) => {
+  // console.log(images);
   return (
     <CardItemsWapper>
       <Allimageslist images={images} />

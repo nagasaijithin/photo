@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import history from "../history";
 import { connect } from "react-redux";
 
-import { init, searchImag } from "../actions";
+import { init, searchImag, collections } from "../actions";
 import greaterthan from "../assets/greaterthan.svg";
 import lessthan from "../assets/lessthan.svg";
 
@@ -59,40 +59,49 @@ const NumberGrid = styled.div`
 //////////////////////// event handlers
 ///////////////////////////////////////////
 
-const pageChangeHandeler = (e, initaction, actionto, match) => {
+const pageChangeHandeler = (e, initaction, pagebartype, match) => {
   e.persist();
-  if (actionto) {
+  if (pagebartype === "initbar") {
     initaction(Number(e.target.title));
     history.push(`/latestimages/${e.target.title}`);
-  } else {
+  } else if (pagebartype === "searchbar") {
     let query = match.params.query;
     initaction(query, e.target.title);
     history.push(`/search/${query}/${e.target.title}`);
+  } else {
+    initaction(e.target.title);
+    history.push(`/collections/${e.target.title}`);
   }
 };
-const backpageHandeler = (e, match, initaction, actionto) => {
+const backpageHandeler = (e, match, initaction, pagebartype) => {
   let num = Number(match.params.id) <= 41 ? Number(match.params.id) : 41;
   if (num > 1) {
-    if (actionto) {
+    if (pagebartype === "initbar") {
       initaction(num - 1);
       history.push(`/latestimages/${num - 1}`);
-    } else {
+    } else if (pagebartype === "searchbar") {
       let query = match.params.query;
       initaction(query, num - 1);
       history.push(`/search/${query}/${num - 1}`);
+    } else {
+      initaction(num - 1);
+      history.push(`/collections/${num - 1}`);
     }
   }
 };
-const nextpageHandeler = (e, match, initaction, actionto) => {
+const nextpageHandeler = (e, match, initaction, pagebartype) => {
   let num = Number(match.params.id);
   if (num < 50) {
-    if (actionto) {
+    if (pagebartype === "initbar") {
       initaction(num + 1);
       history.push(`/latestimages/${num + 1}`);
-    } else {
+    } else if (pagebartype === "searchbar") {
       let query = match.params.query;
       initaction(query, num + 1);
       history.push(`/search/${query}/${num + 1}`);
+    } else {
+      initaction(num + 1);
+      history.push(`/collections/${num + 1}`);
     }
   }
 };
@@ -100,7 +109,7 @@ const nextpageHandeler = (e, match, initaction, actionto) => {
 ///////////////////////////////////////////////////////
 //////////////////////// helper component
 ///////////////////////////////////////////
-const NumbergridItem = ({ start, initaction, actionto, match }) => {
+const NumbergridItem = ({ start, initaction, pagebartype, match }) => {
   let arr = [];
 
   for (let i = 1; i <= 10; i++) {
@@ -113,7 +122,7 @@ const NumbergridItem = ({ start, initaction, actionto, match }) => {
       {arr.map((ar, i) => (
         <div
           title={ar}
-          onClick={(e) => pageChangeHandeler(e, initaction, actionto, match)}
+          onClick={(e) => pageChangeHandeler(e, initaction, pagebartype, match)}
           key={i}
         >
           {ar}
@@ -126,27 +135,33 @@ const NumbergridItem = ({ start, initaction, actionto, match }) => {
 ////////////////////////////////main component
 //////////////////////////////////////////////////////
 const Pagebar = ({ match, pagebartype, ...props }) => {
-  let actiontype = pagebartype === "initbar" ? props.init : props.searchImag;
-  let actionto = pagebartype === "initbar" ? true : false;
+  let actiontype;
+  if (pagebartype === "initbar") {
+    actiontype = props.init;
+  } else if (pagebartype === "searchbar") {
+    actiontype = props.searchImag;
+  } else {
+    actiontype = props.collections;
+  }
   return (
     <Pagebarwapper>
       <div
         title="Backpage"
-        onClick={(e) => backpageHandeler(e, match, actiontype, actionto)}
+        onClick={(e) => backpageHandeler(e, match, actiontype, pagebartype)}
       >
         <img src={lessthan} alt="Backpage" />
       </div>
       <NumberGrid>
         <NumbergridItem
           initaction={actiontype}
-          actionto={actionto}
+          pagebartype={pagebartype}
           match={match}
           start={Number(match.params.id) <= 41 ? Number(match.params.id) : 41}
         />
       </NumberGrid>
       <div
         title="Nextpage"
-        onClick={(e) => nextpageHandeler(e, match, actiontype, actionto)}
+        onClick={(e) => nextpageHandeler(e, match, actiontype, pagebartype)}
       >
         <img src={greaterthan} alt="Nextpage" />
       </div>
@@ -158,6 +173,6 @@ const mapStateToProps = (state) => {
     allimages: state,
   };
 };
-export default connect(mapStateToProps, { init, searchImag })(
+export default connect(mapStateToProps, { init, searchImag, collections })(
   withRouter(Pagebar)
 );
