@@ -13,7 +13,6 @@ const CardItemsWapper = styled.div`
 `;
 
 const Allimageslist = ({ images }) => {
-  console.log(images);
   let imageslist =
     images.length > 1 && images[0].urls
       ? images
@@ -26,7 +25,7 @@ const Allimageslist = ({ images }) => {
       {imageslist.map(({ urls, id, alt_description, user, links }) => (
         <Imagelist
           key={id}
-          url={urls.thumb}
+          url={urls}
           user={user}
           alt={alt_description}
           dimg={links.download}

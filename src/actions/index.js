@@ -1,4 +1,10 @@
-import { INIT, SEARCH_IMG, COLLECTION, CONLLECTION_ALL_IMAGES } from "./types";
+import {
+  INIT,
+  SEARCH_IMG,
+  COLLECTION,
+  CONLLECTION_ALL_IMAGES,
+  CONLLECTION_ALL_IMAGES_DETAILS,
+} from "./types";
 import api from "../api";
 
 export const init = (pageNum) => async (disptch) => {
@@ -42,15 +48,36 @@ export const collections = (pageNum) => async (disptch) => {
   });
 };
 
-export const collectionPhotos = (colid, pageNum) => async (disptch) => {
+export const collectionPhotos = (colid, pageNum, perpage) => async (
+  disptch
+) => {
   let res = await api.get(`/collections/${colid}/photos`, {
     params: {
-      per_page: "25",
+      per_page: perpage ? perpage : "25",
       page: pageNum,
     },
   });
+
   disptch({
     type: CONLLECTION_ALL_IMAGES,
     payload: res.data,
   });
+};
+export const collectionPhotoDetails = (
+  title,
+  totalphotos,
+  id,
+  startpoint,
+  onpage
+) => {
+  return {
+    type: CONLLECTION_ALL_IMAGES_DETAILS,
+    payload: {
+      startpoint,
+      title,
+      totalphotos,
+      id,
+      onpage: onpage ? onpage : 1,
+    },
+  };
 };

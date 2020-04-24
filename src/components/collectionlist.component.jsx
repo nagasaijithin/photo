@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Title from "./title.component";
-
+import { collectionPhotoDetails } from "../actions";
 const GridWapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -55,7 +55,7 @@ const HeaderLink = styled(Link)`
   color: black;
 `;
 
-const ListofCollection = ({ data }) => {
+const ListofCollection = ({ data, collectiondetailsAction }) => {
   let datalist = data.length > 1 && data[0].tags ? data : [];
   return (
     <GridWapper>
@@ -63,12 +63,22 @@ const ListofCollection = ({ data }) => {
         datalist.map(
           ({ id, preview_photos, tags, title, total_photos, user }) => (
             <div key={id}>
-              <Link to={`/collection/${id}/1`}>
+              <Link
+                onClick={() =>
+                  collectiondetailsAction(title, total_photos, id, total_photos)
+                }
+                to={`/collection/${id}/1`}
+              >
                 {preview_photos.map(({ id, urls }) => (
                   <img src={urls.thumb} alt={title} key={id} />
                 ))}
               </Link>
-              <HeaderLink to={`/collection/${id}/1`}>
+              <HeaderLink
+                onClick={() =>
+                  collectiondetailsAction(title, total_photos, id, total_photos)
+                }
+                to={`/collection/${id}/1`}
+              >
                 <Title title={title} size="2rem" />
               </HeaderLink>
               <div style={{ padding: ".5rem", fontSize: "1.1rem" }}>
@@ -93,10 +103,13 @@ const ListofCollection = ({ data }) => {
   );
 };
 
-const CollectionList = ({ data }) => {
+const CollectionList = ({ data, collectiondetailssetup }) => {
   return (
     <CollectionListWapper>
-      <ListofCollection data={data} />
+      <ListofCollection
+        data={data}
+        collectiondetailsAction={collectiondetailssetup}
+      />
     </CollectionListWapper>
   );
 };
@@ -105,4 +118,6 @@ const mapStateToProps = (state) => {
     data: state.intiReducer,
   };
 };
-export default connect(mapStateToProps)(CollectionList);
+export default connect(mapStateToProps, {
+  collectiondetailssetup: collectionPhotoDetails,
+})(CollectionList);

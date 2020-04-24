@@ -8,6 +8,7 @@ import HomePage from "./pages/homepage";
 import SearchPage from "./pages/searchpage";
 import CollectionsPage from "./pages/collectionspage";
 import CollectionPage from "./pages/collectionpage";
+import PhotoPopuppage from "./pages/PhotoPopuppage";
 
 /// components
 const HomepageContiner = styled.div`
@@ -29,6 +30,7 @@ function App() {
         <Route path="/search/:query/:id" exact component={SearchPage} />
         <Route path="/collections/:id" exact component={CollectionsPage} />
         <Route path="/collection/:clid/:id" exact component={CollectionPage} />
+        <Route path="/photo/:pid" exact component={PhotoPopuppage} />
       </HomepageContiner>
     </div>
   );
