@@ -30,7 +30,7 @@ function App() {
         <Route path="/search/:query/:id" exact component={SearchPage} />
         <Route path="/collections/:id" exact component={CollectionsPage} />
         <Route path="/collection/:clid/:id" exact component={CollectionPage} />
-        <Route path="/photo/:pid" exact component={PhotoPopuppage} />
+        <Route path="/photo/:pid" component={PhotoPopuppage} />
       </HomepageContiner>
     </div>
   );

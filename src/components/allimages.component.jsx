@@ -19,7 +19,6 @@ const Allimageslist = ({ images }) => {
       : images.results
       ? images.results
       : [];
-  console.log(imageslist);
   return (
     <>
       {imageslist.map(({ urls, id, alt_description, user, links }) => (
@@ -29,17 +28,22 @@ const Allimageslist = ({ images }) => {
           user={user}
           alt={alt_description}
           dimg={links.download}
+          id={id}
         />
       ))}
     </>
   );
 };
 
-const Allimage = ({ images }) => {
-  // console.log(images);
+const Allimage = ({ images, ownlink }) => {
+  // console.log(props);
   return (
     <CardItemsWapper>
-      <Allimageslist images={images} />
+      {ownlink ? (
+        <Allimageslist images={ownlink} />
+      ) : (
+        <Allimageslist images={images} />
+      )}
     </CardItemsWapper>
   );
 };

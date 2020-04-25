@@ -7,9 +7,9 @@ import CollectionButton from "../components/collectionbutton.component";
 import Title from "../components/title.component";
 const Collectionpage = ({ match, setup, ...props }) => {
   useEffect(() => {
-    console.log("hi");
-    props.state.intiReducer.length > 1
-      ? setup(match.params.clid, 1)
+    console.log();
+    props.state.collectiondetails.title !== ""
+      ? setup(match.params.clid, match.params.id === "1" ? 1 : match.params.id)
       : history.push("/collections/1");
   }, []);
   return (

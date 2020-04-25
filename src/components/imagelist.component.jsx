@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import download from "../assets/download.svg";
 ///////////////////////////////////////////////
@@ -37,10 +38,12 @@ const UserWapper = styled.div`
 const MainWapper = styled.div`
   text-align: center;
   width: 100%;
-  & > img {
-    transition: all 2s ease-in;
-    &:hover {
-      filter: grayscale(60%);
+  & > a {
+    & > img {
+      transition: all 2s ease-in;
+      &:hover {
+        filter: grayscale(60%);
+      }
     }
   }
 `;
@@ -49,7 +52,7 @@ const MainWapper = styled.div`
 ///////// main ImageList component
 //////////////////////////////////////////////
 const Imagelist = (props) => {
-  let { url, user, alt, dimg } = props;
+  let { url, user, alt, dimg, id } = props;
   const [state, setstate] = useState(0);
 
   let iel = useRef(null);
@@ -64,12 +67,14 @@ const Imagelist = (props) => {
   }, [iel, icel]);
   return (
     <MainWapper ref={(el) => (icel = el)}>
-      <img
-        src={url.thumb}
-        alt={alt}
-        ref={(el) => (iel = el)}
-        style={{ width: "100%" }}
-      />
+      <Link to={`/photo/${id}`}>
+        <img
+          src={url.thumb}
+          alt={alt}
+          ref={(el) => (iel = el)}
+          style={{ width: "100%" }}
+        />
+      </Link>
       <UserWapper imgwidth={state}>
         <div>
           <img src={user.profile_image.medium} alt={user.name} />

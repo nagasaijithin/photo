@@ -4,6 +4,7 @@ import {
   COLLECTION,
   CONLLECTION_ALL_IMAGES,
   CONLLECTION_ALL_IMAGES_DETAILS,
+  PHOTO_AND_RELATED,
 } from "./types";
 import api from "../api";
 
@@ -80,4 +81,14 @@ export const collectionPhotoDetails = (
       onpage: onpage ? onpage : 1,
     },
   };
+};
+
+export const getaPhoto = (photoid) => async (disptch) => {
+  let res1 = await api.get(`photos/${photoid}`);
+  let res2 = await api.get(`photos/${photoid}/related`);
+  console.log("hi");
+  disptch({
+    type: PHOTO_AND_RELATED,
+    payload: { mainphoto: res1.data, relatedphotos: res2.data },
+  });
 };
