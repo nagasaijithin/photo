@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 ////main page components
 import NavBar from "./components/nav.component";
+import MainLoder from "./components/loder.component";
 import HomePage from "./pages/homepage";
 import SearchPage from "./pages/searchpage";
 import CollectionsPage from "./pages/collectionspage";
@@ -16,10 +17,12 @@ const HomepageContiner = styled.div`
   margin: 0 auto;
   padding: 3rem;
 `;
+
 function App() {
   return (
-    <div>
+    <>
       <NavBar />
+      <MainLoder />
       <HomepageContiner>
         <Route
           path="/"
@@ -32,7 +35,7 @@ function App() {
         <Route path="/collection/:clid/:id" exact component={CollectionPage} />
         <Route path="/photo/:pid" component={PhotoPopuppage} />
       </HomepageContiner>
-    </div>
+    </>
   );
 }
 

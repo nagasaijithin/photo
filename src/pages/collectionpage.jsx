@@ -5,18 +5,26 @@ import { collectionPhotos } from "../actions";
 import Allimage from "../components/allimages.component";
 import CollectionButton from "../components/collectionbutton.component";
 import Title from "../components/title.component";
-const Collectionpage = ({ match, setup, ...props }) => {
+function useGetdataFromApi(titleCond, setup, collectionid, idcond) {
   useEffect(() => {
-    console.log();
-    props.state.collectiondetails.title !== ""
-      ? setup(match.params.clid, match.params.id === "1" ? 1 : match.params.id)
-      : history.push("/collections/1");
-  }, []);
+    titleCond ? setup(collectionid, idcond) : history.push("/collections/1");
+    return () => {
+      return "true";
+    };
+  }, [titleCond, setup, collectionid, idcond]);
+}
+const Collectionpage = ({ match, setup, ...props }) => {
+  let titleCond = props.state.collectiondetails.title !== "";
+  let collectionid = match.params.clid;
+  let idcond = match.params.id === "1" ? 1 : match.params.id;
+
+  useGetdataFromApi(titleCond, setup, collectionid, idcond);
+
   return (
     <div>
       <Title title={props.state.collectiondetails.title} />
       <Allimage />
-      <CollectionButton />
+      <CollectionButton match={match} />
     </div>
   );
 };

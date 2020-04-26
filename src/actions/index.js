@@ -5,24 +5,26 @@ import {
   CONLLECTION_ALL_IMAGES,
   CONLLECTION_ALL_IMAGES_DETAILS,
   PHOTO_AND_RELATED,
+  CLEAR_PHOTO_AND_RELATED_IMAGES,
+  CLEAR_IMAGES,
+  CLEAR_COLLECTION,
 } from "./types";
 import api from "../api";
 
 export const init = (pageNum) => async (disptch) => {
-  // let res = await api.get("/photos", {
-  //   params: {
-  //     per_page: "25",
-  //     page: pageNum,
-  //   },
-  // });
+  let res = await api.get("/photos", {
+    params: {
+      per_page: "25",
+      page: pageNum,
+    },
+  });
   disptch({
     type: INIT,
-    payload: [],
+    payload: res.data,
   });
 };
 
 export const searchImag = (query, pageNum) => async (disptch) => {
-  console.log("hi");
   let res = await api.get("/search/photos", {
     params: {
       per_page: "25",
@@ -86,9 +88,24 @@ export const collectionPhotoDetails = (
 export const getaPhoto = (photoid) => async (disptch) => {
   let res1 = await api.get(`photos/${photoid}`);
   let res2 = await api.get(`photos/${photoid}/related`);
-  console.log("hi");
   disptch({
     type: PHOTO_AND_RELATED,
     payload: { mainphoto: res1.data, relatedphotos: res2.data },
   });
+};
+
+export const clearImags = () => {
+  return {
+    type: CLEAR_IMAGES,
+  };
+};
+export const clearPhotoimages = () => {
+  return {
+    type: CLEAR_PHOTO_AND_RELATED_IMAGES,
+  };
+};
+export const clearcollections = () => {
+  return {
+    type: CLEAR_COLLECTION,
+  };
 };

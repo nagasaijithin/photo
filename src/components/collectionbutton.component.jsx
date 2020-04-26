@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { collectionPhotos, collectionPhotoDetails } from "../actions";
+import { collectionPhotoDetails, clearImags } from "../actions";
 const ButtonWapper = styled.div`
   margin: 2rem;
   display: flex;
@@ -22,22 +22,17 @@ const MainButton = styled(Link)`
 `;
 
 const runtheactionsfornextbtn = (
-  collectionPhotos,
   collectionPhotoDetails,
   { id, onpage, totalphotos, title, startpoint }
 ) => {
   if (totalphotos > 25) {
-    let perpage = totalphotos > 25 ? 25 : totalphotos;
-    collectionPhotos(id, onpage + 1, perpage);
     collectionPhotoDetails(title, totalphotos - 25, id, startpoint, onpage + 1);
   }
 };
 const runtheactionsforbackbtn = (
-  collectionPhotos,
   collectionPhotoDetails,
   { id, onpage, totalphotos, title, startpoint }
 ) => {
-  collectionPhotos(id, onpage - 1, 25);
   collectionPhotoDetails(title, totalphotos + 25, id, startpoint, onpage - 1);
 };
 
@@ -45,8 +40,9 @@ const CollectionButton = ({
   state: {
     collectiondetails: { startpoint, title, totalphotos, id, onpage },
   },
-  collectionPhotos,
   collectionPhotoDetails,
+  clearImags,
+  match,
 }) => {
   let collectiondetailsValues = {
     startpoint,
@@ -55,15 +51,24 @@ const CollectionButton = ({
     id,
     onpage,
   };
+  useUpdatabynavgation(
+    match.params.id,
+    clearImags,
+    collectionPhotoDetails,
+    startpoint,
+    title,
+    totalphotos,
+    id,
+    onpage
+  );
   return (
     <ButtonWapper>
       {onpage > 1 && (
         <MainButton
           title="Back Page"
-          to={`/collection/${id}/${onpage - 1}`}
+          to={`/collection/${id}/${Number(onpage) - 1}`}
           onClick={() =>
             runtheactionsforbackbtn(
-              collectionPhotos,
               collectionPhotoDetails,
               collectiondetailsValues
             )
@@ -77,12 +82,11 @@ const CollectionButton = ({
           title="Next page"
           onClick={(e) =>
             runtheactionsfornextbtn(
-              collectionPhotos,
               collectionPhotoDetails,
               collectiondetailsValues
             )
           }
-          to={`/collection/${id}/${onpage + 1}`}
+          to={`/collection/${id}/${Number(onpage) + 1}`}
         >
           Next page
         </MainButton>
@@ -90,12 +94,28 @@ const CollectionButton = ({
     </ButtonWapper>
   );
 };
+
+function useUpdatabynavgation(
+  pid,
+  clearImags,
+  collectionPhotoDetails,
+  startpoint,
+  title,
+  totalphotos,
+  id,
+  onpage
+) {
+  useEffect(() => {
+    collectionPhotoDetails(title, totalphotos, id, startpoint, pid);
+    return () => clearImags();
+  }, [pid]);
+}
 const mapStateToProps = (state) => {
   return {
     state,
   };
 };
 export default connect(mapStateToProps, {
-  collectionPhotos,
   collectionPhotoDetails,
+  clearImags,
 })(CollectionButton);

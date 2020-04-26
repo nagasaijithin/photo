@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import { init } from "../actions";
+import { init, clearImags } from "../actions";
 import Title from "../components/title.component";
 import Allimage from "../components/allimages.component";
 import Pagebar from "../components/pagebar.component";
 
-const HomePage = ({ init, match }) => {
-  useEffect(() => {
-    init(Number(match.params.id));
-  }, []);
+const HomePage = ({ init, clearImags, match }) => {
+  // useGetdataFromApi(init, clearImags, match.params.id);
+  console.log("hi from homepage");
   return (
     <>
       <Title title="Latest images" />
@@ -19,9 +18,19 @@ const HomePage = ({ init, match }) => {
     </>
   );
 };
+
+function useGetdataFromApi(init, clearImages, id) {
+  useEffect(() => {
+    console.log("hi from homepage use");
+    init(id);
+    return () => clearImages();
+  }, [id]);
+}
 const mapStateToProps = (state) => {
   return {
     state,
   };
 };
-export default connect(mapStateToProps, { init })(withRouter(HomePage));
+export default connect(mapStateToProps, { init, clearImags })(
+  withRouter(HomePage)
+);

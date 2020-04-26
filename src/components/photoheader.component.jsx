@@ -81,7 +81,6 @@ const TagesWapper = styled.div`
   }
 `;
 const PhotoHeader = ({ state }) => {
-  console.log(state);
   let { mainphoto } = state;
   let Alltags =
     mainphoto && mainphoto.tags.filter(({ type }) => type === "search");

@@ -86,15 +86,16 @@ const ListofCollection = ({ data, collectiondetailsAction }) => {
                 <h3>Created by {user.name}</h3>
               </div>
               <TagsWapper>
-                {tags.map((tag, i) => {
-                  if (i < 4) {
+                {tags
+                  .filter((tag, i) => tag.type === "search")
+                  .filter((tag, i) => i < 4)
+                  .map((tag, i) => {
                     return (
                       <Link to={`/search/${tag.title}/1`} key={i}>
                         #{tag.title}
                       </Link>
                     );
-                  }
-                })}
+                  })}
               </TagsWapper>
             </div>
           )

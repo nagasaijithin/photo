@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { getaPhoto } from "../actions";
+import { getaPhoto, clearPhotoimages } from "../actions";
 import PhotoHeader from "../components/photoheader.component";
 import PhotoRelatedImages from "../components/photorelatedimages.component";
-
-const PhotoPopuppage = ({ match, setup }) => {
+function usePhotodataFromApi(setup, clearPhotoimages, pid) {
   useEffect(() => {
-    setup(match.params.pid);
-  }, []);
+    setup(pid);
+    return () => clearPhotoimages();
+  }, [pid]);
+}
+const PhotoPopuppage = ({ match, setup, clearPhotoimages }) => {
+  usePhotodataFromApi(setup, clearPhotoimages, match.params.pid);
   return (
     <div>
       <PhotoHeader />
@@ -20,4 +23,6 @@ const mapStateToProps = (state) => {
     state,
   };
 };
-export default connect(mapStateToProps, { setup: getaPhoto })(PhotoPopuppage);
+export default connect(mapStateToProps, { setup: getaPhoto, clearPhotoimages })(
+  PhotoPopuppage
+);

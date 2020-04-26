@@ -12,6 +12,7 @@ export const collectiondetailsReducer = (state = intistate, action) => {
     case CONLLECTION_ALL_IMAGES_DETAILS:
       return { ...state, ...action.payload };
       break;
+
     default:
       return state;
       break;
