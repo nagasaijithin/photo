@@ -8,8 +8,7 @@ import Allimage from "../components/allimages.component";
 import Pagebar from "../components/pagebar.component";
 
 const HomePage = ({ init, clearImags, match }) => {
-  // useGetdataFromApi(init, clearImags, match.params.id);
-  console.log("hi from homepage");
+  useGetdataFromApi(init, clearImags, match.params.id);
   return (
     <>
       <Title title="Latest images" />
@@ -21,7 +20,6 @@ const HomePage = ({ init, clearImags, match }) => {
 
 function useGetdataFromApi(init, clearImages, id) {
   useEffect(() => {
-    console.log("hi from homepage use");
     init(id);
     return () => clearImages();
   }, [id]);

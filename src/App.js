@@ -1,6 +1,7 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 ////main page components
 import NavBar from "./components/nav.component";
@@ -18,25 +19,38 @@ const HomepageContiner = styled.div`
   padding: 3rem;
 `;
 
-function App() {
+function App({ state }) {
   return (
     <>
       <NavBar />
-      <MainLoder />
+      {state.mainloader && <MainLoder />}
       <HomepageContiner>
-        <Route
-          path="/"
-          exact
-          render={() => <Redirect from={"/"} to={"/latestimages/1"} />}
-        />
-        <Route path="/latestimages/:id" exact component={HomePage} />
-        <Route path="/search/:query/:id" exact component={SearchPage} />
-        <Route path="/collections/:id" exact component={CollectionsPage} />
-        <Route path="/collection/:clid/:id" exact component={CollectionPage} />
-        <Route path="/photo/:pid" component={PhotoPopuppage} />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={() => <Redirect from={"/"} to={"/latestimages/1"} />}
+          />
+          <Route path="/latestimages/:id" exact component={HomePage} />
+          <Route path="/search/:query/:id" exact component={SearchPage} />
+          <Route path="/collections/:id" exact component={CollectionsPage} />
+          <Route
+            path="/collection/:clid/:id"
+            exact
+            component={CollectionPage}
+          />
+          <Route path="/photo/:pid" exact component={PhotoPopuppage} />
+          <Route
+            component={() => <h2>Why are you here ? this page not found</h2>}
+          />
+        </Switch>
       </HomepageContiner>
     </>
   );
 }
-
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+export default connect(mapStateToProps)(App);

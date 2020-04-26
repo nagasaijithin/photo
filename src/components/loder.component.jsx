@@ -24,7 +24,7 @@ const ellipsis3 = keyframes`
 const LoaderWapper = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: black;
+  background-color: #2d2d2d;
   position: fixed;
   display: flex;
   justify-content: center;
