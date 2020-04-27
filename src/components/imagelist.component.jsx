@@ -38,6 +38,7 @@ const UserWapper = styled.div`
 const MainWapper = styled.div`
   text-align: center;
   width: 100%;
+  grid-row-end: span 30;
   & > a {
     & > img {
       transition: all 2s ease-in;

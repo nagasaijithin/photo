@@ -14,13 +14,15 @@ const Form = styled.form`
     font-size: 2rem;
     padding: 0 1rem;
     border: none;
+    color: white;
+    background-color: transparent;
   }
   & img {
     width: 3.5rem;
     padding: 0 0.5rem;
   }
   & > button {
-    background-color: white;
+    background-color: transparent;
     border: none;
     cursor: pointer;
   }

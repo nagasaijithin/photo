@@ -10,20 +10,26 @@ const Nav = styled.nav`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: 2rem 2rem;
+  padding: 1rem 2rem;
   font-size: 3rem;
   font-weight: 900;
   & a {
     text-decoration: none;
-    color: black;
+    color: white;
   }
+`;
+const NavListContiner = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+  background-color: #2d2d2d;
 `;
 const NavListWapper = styled.div`
   position: fixed;
   width: 20%;
   height: 100%;
   background-color: #2d2d2d;
-  z-index: 20;
+  z-index: 30;
   right: 0;
   transform: translateX(110%);
   box-shadow: 0px 0px 20px black;
@@ -50,6 +56,7 @@ const NavListWapper = styled.div`
 const Handbar = styled.div`
   transform: rotate(90deg);
   cursor: pointer;
+  color: white;
 `;
 const SearchandhandelbarWapper = styled.div`
   display: flex;
@@ -155,17 +162,19 @@ const NavBar = () => {
           </li>
         </ul>
       </NavListWapper>
-      <Nav>
-        <Link to="/">Logo</Link>
-        <SearchandhandelbarWapper>
-          <Input type="search">
-            <img src={search} alt="Search" />
-          </Input>
-          <Handbar onClick={() => navAnimation(nlwel, nlwulel, nlclel)}>
-            |||
-          </Handbar>
-        </SearchandhandelbarWapper>
-      </Nav>
+      <NavListContiner>
+        <Nav>
+          <Link to="/">Logo</Link>
+          <SearchandhandelbarWapper>
+            <Input type="search">
+              <img src={search} alt="Search" />
+            </Input>
+            <Handbar onClick={() => navAnimation(nlwel, nlwulel, nlclel)}>
+              |||
+            </Handbar>
+          </SearchandhandelbarWapper>
+        </Nav>
+      </NavListContiner>
     </>
   );
 };

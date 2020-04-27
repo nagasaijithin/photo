@@ -29,6 +29,7 @@ const LoaderWapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 20;
 `;
 const Mainloader = styled.div`
   width: 10%;

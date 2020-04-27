@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 ////main page components
 import NavBar from "./components/nav.component";
 import MainLoder from "./components/loder.component";
+import FofComponent from "./components/404.component";
 import HomePage from "./pages/homepage";
 import SearchPage from "./pages/searchpage";
 import CollectionsPage from "./pages/collectionspage";
@@ -17,6 +18,8 @@ const HomepageContiner = styled.div`
   max-width: ${(props) => props.theme.continer};
   margin: 0 auto;
   padding: 3rem;
+  top: 4rem;
+  position: relative;
 `;
 
 function App({ state }) {
@@ -40,9 +43,7 @@ function App({ state }) {
             component={CollectionPage}
           />
           <Route path="/photo/:pid" exact component={PhotoPopuppage} />
-          <Route
-            component={() => <h2>Why are you here ? this page not found</h2>}
-          />
+          <Route component={FofComponent} />
         </Switch>
       </HomepageContiner>
     </>
