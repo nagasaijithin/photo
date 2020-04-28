@@ -34,7 +34,7 @@ const BackToHomeButton = styled(Link)`
 const FofComponent = () => {
   return (
     <FofWapper>
-      <Fofcontent>Why are you here ? this page is not found</Fofcontent>
+      <Fofcontent>Why are you here ? This page is not found</Fofcontent>
       <FofMain>404</FofMain>
       <BackToHomeButton to="/">BACK TO HOME</BackToHomeButton>
     </FofWapper>

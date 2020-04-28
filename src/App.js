@@ -13,7 +13,7 @@ import CollectionsPage from "./pages/collectionspage";
 import CollectionPage from "./pages/collectionpage";
 import PhotoPopuppage from "./pages/PhotoPopuppage";
 
-/// components
+/// styled-components
 const HomepageContiner = styled.div`
   max-width: ${(props) => props.theme.continer};
   margin: 0 auto;

@@ -11,7 +11,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: 900;
   & a {
     text-decoration: none;
@@ -23,6 +23,7 @@ const NavListContiner = styled.div`
   width: 100%;
   z-index: 20;
   background-color: #2d2d2d;
+  box-shadow: 0 0 15px black;
 `;
 const NavListWapper = styled.div`
   position: fixed;
@@ -164,7 +165,7 @@ const NavBar = () => {
       </NavListWapper>
       <NavListContiner>
         <Nav>
-          <Link to="/">Logo</Link>
+          <Link to="/">PhotoHub</Link>
           <SearchandhandelbarWapper>
             <Input type="search">
               <img src={search} alt="Search" />

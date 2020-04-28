@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { animateScroll as scroll } from "react-scroll";
+import { Helmet } from "react-helmet";
 import history from "../history";
 import { collectionPhotos } from "../actions";
 import Allimage from "../components/allimages.component";
@@ -7,6 +9,9 @@ import CollectionButton from "../components/collectionbutton.component";
 import Title from "../components/title.component";
 function useGetdataFromApi(titleCond, setup, collectionid, idcond) {
   useEffect(() => {
+    scroll.scrollToTop({
+      smooth: true,
+    });
     titleCond ? setup(collectionid, idcond) : history.push("/collections/1");
     return () => {
       return "true";
@@ -22,6 +27,9 @@ const Collectionpage = ({ match, setup, ...props }) => {
 
   return (
     <div>
+      <Helmet>
+        <title>{`${props.state.collectiondetails.title} - PhotoHub`}</title>
+      </Helmet>
       <Title title={props.state.collectiondetails.title} />
       <Allimage />
       <CollectionButton match={match} />
