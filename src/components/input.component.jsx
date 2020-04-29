@@ -16,6 +16,10 @@ const Form = styled.form`
     border: none;
     color: white;
     background-color: transparent;
+    @media ${(props) => props.theme.mediaQuery.mediaMid2} {
+      padding: 0;
+      font-size: 1.6rem;
+    }
   }
   & img {
     width: 3.5rem;
@@ -25,6 +29,8 @@ const Form = styled.form`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 `;
 

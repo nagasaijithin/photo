@@ -49,6 +49,9 @@ const TagsWapper = styled.div`
 `;
 const CollectionListWapper = styled.div`
   padding: 2rem;
+  @media ${(props) => props.theme.mediaQuery.mediaMid2} {
+    padding: 1rem 5rem;
+  }
 `;
 const HeaderLink = styled(Link)`
   text-decoration: none;

@@ -29,6 +29,9 @@ const UserWapper = styled.div`
     padding: 0.5rem;
     background-color: ${(props) => props.theme.downbackcolor};
     border-radius: 4px;
+    @media ${(props) => props.theme.mediaQuery.mediaMid2} {
+      height: 53%;
+    }
     & img {
       height: 100%;
     }

@@ -7,9 +7,12 @@ import Imagelist from "./imagelist.component";
 const CardItemsWapper = styled.div`
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 0 33px;
   grid-auto-rows: 10px;
+  @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
 `;
 
 const Allimageslist = ({ images }) => {

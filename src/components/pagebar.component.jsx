@@ -17,6 +17,16 @@ const Pagebarwapper = styled.div`
   height: 3rem;
   align-items: center;
   margin: 2rem;
+  @media ${(props) => props.theme.mediaQuery.mediaMid1} {
+    margin: 0rem;
+    font-size: 2rem;
+  }
+
+  @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 
   & > div:not(:nth-child(2)) {
     height: 100%;
@@ -28,6 +38,12 @@ const Pagebarwapper = styled.div`
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.5s ease-out;
+    @media ${(props) => props.theme.mediaQuery.mediaMid1} {
+      height: 90%;
+    }
+    @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+      height: 85%;
+    }
     &:hover {
       background-color: ${(props) => props.theme.downbackcolor};
     }
@@ -41,6 +57,9 @@ const NumberGrid = styled.div`
   align-content: center;
   justify-content: center;
   height: 110%;
+  @media ${(props) => props.theme.mediaQuery.mediaMid1} {
+    height: 100%;
+  }
   & div {
     padding: 0 1rem;
     margin: 0 1.5rem;
@@ -48,6 +67,13 @@ const NumberGrid = styled.div`
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.5s ease-out;
+    @media ${(props) => props.theme.mediaQuery.mediaMid1} {
+      padding: 0 0.6rem;
+      margin: 0 1rem;
+    }
+    @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+      margin: 0 0.7rem;
+    }
     &:hover {
       background-color: ${(props) => props.theme.downbackcolor};
     }

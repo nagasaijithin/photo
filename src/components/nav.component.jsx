@@ -6,34 +6,38 @@ import { TimelineLite, Power3 } from "gsap";
 import search from "../assets/search.svg";
 import Input from "./input.component";
 const Nav = styled.nav`
-  max-width: ${(props) => props.theme.continer};
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
   font-size: 2.8rem;
   font-weight: 900;
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  z-index: 20;
+  background-color: #2d2d2d;
+  box-shadow: 0 0 15px black;
   & a {
     text-decoration: none;
     color: white;
   }
 `;
-const NavListContiner = styled.div`
-  position: fixed;
-  width: 100%;
-  z-index: 20;
-  background-color: #2d2d2d;
-  box-shadow: 0 0 15px black;
-`;
+
 const NavListWapper = styled.div`
   position: fixed;
-  width: 20%;
+  width: 20vw;
   height: 100%;
   background-color: #2d2d2d;
   z-index: 30;
   right: 0;
   transform: translateX(110%);
   box-shadow: 0px 0px 20px black;
+  @media ${(props) => props.theme.mediaQuery.mediaLarg2} {
+    width: 25vw;
+  }
+  @media ${(props) => props.theme.mediaQuery.mediaMid2} {
+    width: 40vw;
+  }
   & ul {
     width: 100%;
     height: 100%;
@@ -63,6 +67,9 @@ const SearchandhandelbarWapper = styled.div`
   display: flex;
   & > * {
     margin: 0 2rem;
+    @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+      margin: 0 1rem;
+    }
   }
 `;
 const CloseButton = styled.div`
@@ -163,19 +170,17 @@ const NavBar = () => {
           </li>
         </ul>
       </NavListWapper>
-      <NavListContiner>
-        <Nav>
-          <Link to="/">PhotoHub</Link>
-          <SearchandhandelbarWapper>
-            <Input type="search">
-              <img src={search} alt="Search" />
-            </Input>
-            <Handbar onClick={() => navAnimation(nlwel, nlwulel, nlclel)}>
-              |||
-            </Handbar>
-          </SearchandhandelbarWapper>
-        </Nav>
-      </NavListContiner>
+      <Nav>
+        <Link to="/">PhotoHub</Link>
+        <SearchandhandelbarWapper>
+          <Input type="search">
+            <img src={search} alt="Search" />
+          </Input>
+          <Handbar onClick={() => navAnimation(nlwel, nlwulel, nlclel)}>
+            |||
+          </Handbar>
+        </SearchandhandelbarWapper>
+      </Nav>
     </>
   );
 };

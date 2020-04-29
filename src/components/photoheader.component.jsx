@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 const HeaderWapper = styled.div`
-  height: 100vh;
   width: 100%;
   padding: 1rem;
   display: flex;
@@ -23,10 +22,13 @@ const UserWapper = styled.div`
   height: 100%;
   justify-content: center;
   align-items: center;
+  @media ${(props) => props.theme.mediaQuery.mediaMid2} {
+    width: 50%;
+    justify-content: flex-start;
+  }
   & > div {
-    width: 15%;
+    width: 5rem;
     height: 100%;
-
     margin: 1rem;
     & > img {
       height: 100%;
@@ -55,10 +57,12 @@ const DownloadWapper = styled.div`
   }
 `;
 const MainimgWapper = styled.div`
-  height: 70%;
+  height: 70vh;
   text-align: center;
   & > img {
     height: 100%;
+    max-width: 80%;
+    object-fit: contain;
   }
 `;
 

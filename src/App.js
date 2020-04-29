@@ -18,8 +18,9 @@ const HomepageContiner = styled.div`
   max-width: ${(props) => props.theme.continer};
   margin: 0 auto;
   padding: 3rem;
-  top: 4rem;
-  position: relative;
+  @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+    padding: 2rem;
+  }
 `;
 
 function App({ state }) {
