@@ -7,5 +7,7 @@ export default {
     mediaMid1: "(max-width:692px)",
     mediaMid2: "(max-width:562px)",
     mediaMid3: "(max-width:425px)",
+    mediaSmall1: "(max-width:375px)",
+    mediaSmall2: "(max-width:320px)",
   },
 };

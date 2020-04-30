@@ -7,7 +7,7 @@ import download from "../assets/download.svg";
 //////////////////////////////////////////////
 
 const UserWapper = styled.div`
-  height: 50px;
+  height: 6rem;
   width: ${(props) => props.imgwidth}px;
   margin: 0 auto;
   display: flex;

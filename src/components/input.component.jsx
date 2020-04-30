@@ -44,11 +44,25 @@ const formHandler = (e, setState) => {
   }
 };
 
-const Input = ({ type, children }) => {
+const Input = ({
+  type,
+  children,
+  aniclose,
+  anitype,
+  nlwel,
+  nlwulel,
+  nlclel,
+}) => {
   const [state, setState] = useState("");
 
   return (
-    <Form onSubmit={(e) => formHandler(e, setState)}>
+    <Form
+      onSubmit={(e) => {
+        e.persist();
+        formHandler(e, setState);
+        anitype && aniclose(e, nlwel, nlwulel, nlclel);
+      }}
+    >
       <input
         type={type}
         placeholder="Search free images"

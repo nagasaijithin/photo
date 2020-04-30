@@ -72,7 +72,10 @@ const NumberGrid = styled.div`
       margin: 0 1rem;
     }
     @media ${(props) => props.theme.mediaQuery.mediaMid3} {
-      margin: 0 0.7rem;
+      margin: 0 0.5rem;
+    }
+    @media ${(props) => props.theme.mediaQuery.mediaSmall2} {
+      margin: 0 0.3rem;
     }
     &:hover {
       background-color: ${(props) => props.theme.downbackcolor};

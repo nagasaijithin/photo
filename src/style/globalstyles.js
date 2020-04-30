@@ -17,10 +17,12 @@ html{
     @media ${(props) => props.theme.mediaQuery.mediaMid2}{
       font-size: 48.5%;
     }
+    @media ${(props) => props.theme.mediaQuery.mediaSmall1}{
+      font-size: 43.5%;
+    }
     
 }
 body {
- 
   font-family: "Raleway", sans-serif;
 }
 `;

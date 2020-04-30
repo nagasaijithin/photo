@@ -17,6 +17,7 @@ const Nav = styled.nav`
   z-index: 20;
   background-color: #2d2d2d;
   box-shadow: 0 0 15px black;
+
   & a {
     text-decoration: none;
     color: white;
@@ -46,6 +47,25 @@ const NavListWapper = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 2.2rem;
+    & > li:first-child {
+      display: none;
+      @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+        display: block;
+        width: 90%;
+        padding: 1rem 0;
+      }
+      & > form {
+        @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+          padding: 0.5rem;
+        }
+        & > input {
+          @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+            width: 80%;
+            font-size: 1.6rem;
+          }
+        }
+      }
+    }
     & li {
       list-style-type: none;
       padding: 2rem;
@@ -69,6 +89,11 @@ const SearchandhandelbarWapper = styled.div`
     margin: 0 2rem;
     @media ${(props) => props.theme.mediaQuery.mediaMid3} {
       margin: 0 1rem;
+    }
+  }
+  & > form {
+    @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+      display: none;
     }
   }
 `;
@@ -105,7 +130,7 @@ const navAnimation = (nlwel, nlwulel, nlclel) => {
     1,
     {
       opacity: 1,
-      x: -10,
+      x: 0,
       ease: Power3.easeOut,
     },
     0.2,
@@ -113,7 +138,11 @@ const navAnimation = (nlwel, nlwulel, nlclel) => {
   );
 };
 const closeNavAnimation = (e, nlwel, nlwulel, nlclel) => {
-  if (e.target.href || e.target.title === "close") {
+  if (
+    e.target.href ||
+    e.target.title === "close" ||
+    e.target.type === "submit"
+  ) {
     let tl = new TimelineLite();
     tl.staggerTo(
       [...Array.from(nlwulel.children)],
@@ -159,6 +188,18 @@ const NavBar = () => {
           ref={(el) => (nlwulel = el)}
           onClick={(e) => closeNavAnimation(e, nlwel, nlwulel, nlclel)}
         >
+          <li>
+            <Input
+              type="search"
+              aniclose={closeNavAnimation}
+              nlwel={nlwel}
+              nlwulel={nlwulel}
+              nlclel={nlclel}
+              anitype={true}
+            >
+              <img src={search} alt="Search" />
+            </Input>
+          </li>
           <li>
             <Link to="/">Home</Link>
           </li>

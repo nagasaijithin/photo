@@ -9,7 +9,9 @@ const GridWapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 400px;
   grid-gap: 2rem;
-
+  @media ${(props) => props.theme.mediaQuery.mediaSmall2} {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
   & > div {
     width: 100%;
     display: flex;
@@ -51,6 +53,9 @@ const CollectionListWapper = styled.div`
   padding: 2rem;
   @media ${(props) => props.theme.mediaQuery.mediaMid2} {
     padding: 1rem 5rem;
+  }
+  @media ${(props) => props.theme.mediaQuery.mediaSmall1} {
+    padding: 1rem 3rem;
   }
 `;
 const HeaderLink = styled(Link)`
