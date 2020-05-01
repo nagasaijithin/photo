@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { TimelineLite, Power3 } from "gsap";
+import { CSSPlugin } from "gsap";
 
 import search from "../assets/search.svg";
 import Input from "./input.component";
@@ -205,9 +206,6 @@ const NavBar = () => {
           </li>
           <li>
             <Link to="/collections/1">Collections</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </NavListWapper>

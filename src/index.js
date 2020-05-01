@@ -5,7 +5,7 @@ import { store } from "./store";
 import { Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
-
+import { Helmet } from "react-helmet";
 import history from "./history";
 import theme from "./style/themeprovider";
 import { GlobalStyle } from "./style/globalstyles";
@@ -15,8 +15,17 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <App />
+        <>
+          <Helmet>
+            <title>PhotoHubs</title>
+            <meta
+              name="description"
+              content="PhotoHub where you can check all your favorite images , as well as the related images of it, and so much more"
+            />
+          </Helmet>
+          <GlobalStyle />
+          <App />
+        </>
       </ThemeProvider>
     </Router>
   </Provider>,

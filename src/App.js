@@ -22,7 +22,15 @@ const HomepageContiner = styled.div`
     padding: 2rem;
   }
 `;
-
+const Footer = styled.div`
+  font-size: 1.4rem;
+  color: rgba(45, 45, 45, 0.8);
+  text-align: right;
+  padding: 1rem;
+  @media ${(props) => props.theme.mediaQuery.mediaLarg1} {
+    font-size: 1.2rem;
+  }
+`;
 function App({ state }) {
   return (
     <>
@@ -47,6 +55,7 @@ function App({ state }) {
           <Route component={FofComponent} />
         </Switch>
       </HomepageContiner>
+      <Footer>&copy;Naga sai jithin</Footer>
     </>
   );
 }
