@@ -38,7 +38,7 @@ const NavListWapper = styled.div`
     width: 25vw;
   }
   @media ${(props) => props.theme.mediaQuery.mediaMid2} {
-    width: 40vw;
+    width: 100vw;
   }
   & ul {
     width: 100%;
@@ -50,17 +50,17 @@ const NavListWapper = styled.div`
     font-size: 2.2rem;
     & > li:first-child {
       display: none;
-      @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+      @media ${(props) => props.theme.mediaQuery.mediaforNav} {
         display: block;
         width: 90%;
         padding: 1rem 0;
       }
       & > form {
-        @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+        @media ${(props) => props.theme.mediaQuery.mediaforNav} {
           padding: 0.5rem;
         }
         & > input {
-          @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+          @media ${(props) => props.theme.mediaQuery.mediaforNav} {
             width: 80%;
             font-size: 1.6rem;
           }
@@ -88,12 +88,12 @@ const SearchandhandelbarWapper = styled.div`
   display: flex;
   & > * {
     margin: 0 2rem;
-    @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+    @media ${(props) => props.theme.mediaQuery.mediaforNav} {
       margin: 0 1rem;
     }
   }
   & > form {
-    @media ${(props) => props.theme.mediaQuery.mediaMid3} {
+    @media ${(props) => props.theme.mediaQuery.mediaforNav} {
       display: none;
     }
   }

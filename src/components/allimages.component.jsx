@@ -10,8 +10,10 @@ const CardItemsWapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 0 33px;
   grid-auto-rows: 10px;
-  @media ${(props) => props.theme.mediaQuery.mediaMid3} {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  @media ${(props) => props.theme.mediaQuery.mediaforImageList} {
+    grid-gap: 0 13px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    padding: 3rem;
   }
 `;
 

@@ -73,7 +73,7 @@ const Imagelist = (props) => {
     <MainWapper ref={(el) => (icel = el)}>
       <Link to={`/photo/${id}`}>
         <img
-          src={url.thumb}
+          src={url.small}
           alt={alt}
           ref={(el) => (iel = el)}
           style={{ width: "100%" }}

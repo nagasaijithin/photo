@@ -18,14 +18,8 @@ const Pagebarwapper = styled.div`
   align-items: center;
   margin: 2rem;
   @media ${(props) => props.theme.mediaQuery.mediaMid1} {
-    margin: 0rem;
+    margin: 2rem 0.5rem;
     font-size: 2rem;
-  }
-
-  @media ${(props) => props.theme.mediaQuery.mediaMid3} {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
   }
 
   & > div:not(:nth-child(2)) {
@@ -53,29 +47,22 @@ const Pagebarwapper = styled.div`
   }
 `;
 const NumberGrid = styled.div`
+  flex: 1;
   display: flex;
   align-content: center;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 110%;
   @media ${(props) => props.theme.mediaQuery.mediaMid1} {
     height: 100%;
   }
   & div {
     padding: 0 1rem;
-    margin: 0 1.5rem;
     background-color: white;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.5s ease-out;
     @media ${(props) => props.theme.mediaQuery.mediaMid1} {
       padding: 0 0.6rem;
-      margin: 0 1rem;
-    }
-    @media ${(props) => props.theme.mediaQuery.mediaMid3} {
-      margin: 0 0.5rem;
-    }
-    @media ${(props) => props.theme.mediaQuery.mediaSmall2} {
-      margin: 0 0.3rem;
     }
     &:hover {
       background-color: ${(props) => props.theme.downbackcolor};

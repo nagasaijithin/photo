@@ -9,7 +9,7 @@ const GridWapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 400px;
   grid-gap: 2rem;
-  @media ${(props) => props.theme.mediaQuery.mediaSmall2} {
+  @media ${(props) => props.theme.mediaQuery.mediaforCollection2} {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
   & > div {
@@ -39,6 +39,7 @@ const GridWapper = styled.div`
 const TagsWapper = styled.div`
   display: flex;
   font-size: 1.2rem;
+  flex-wrap: wrap;
   & > a {
     padding: 1rem;
     color: black;
@@ -54,7 +55,7 @@ const CollectionListWapper = styled.div`
   @media ${(props) => props.theme.mediaQuery.mediaMid2} {
     padding: 1rem 5rem;
   }
-  @media ${(props) => props.theme.mediaQuery.mediaSmall1} {
+  @media ${(props) => props.theme.mediaQuery.mediaforCollection} {
     padding: 1rem 3rem;
   }
 `;

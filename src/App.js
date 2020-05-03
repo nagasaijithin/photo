@@ -29,6 +29,7 @@ const Footer = styled.div`
   padding: 1rem;
   @media ${(props) => props.theme.mediaQuery.mediaLarg1} {
     font-size: 1.2rem;
+    padding: 0.5rem;
   }
 `;
 function App({ state }) {

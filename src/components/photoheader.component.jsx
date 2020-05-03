@@ -12,7 +12,8 @@ const HeaderWapper = styled.div`
 const UserandDownloadwapper = styled.div`
   height: 10%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+
   align-items: center;
 `;
 const UserWapper = styled.div`

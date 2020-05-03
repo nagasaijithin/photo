@@ -12,13 +12,14 @@ html{
     font-size: 62.5%;
     box-sizing: border-box;
     @media ${(props) => props.theme.mediaQuery.mediaLarg1}{
-      font-size: 56.5%;
+      font-size: 58.5%;
     }
-    @media ${(props) => props.theme.mediaQuery.mediaMid2}{
-      font-size: 48.5%;
-    }
+   
     @media ${(props) => props.theme.mediaQuery.mediaSmall1}{
-      font-size: 43.5%;
+      font-size: 52.5%;
+    }
+    @media ${(props) => props.theme.mediaQuery.mediaSmall3}{
+      font-size: 48.5%;
     }
     
 }
