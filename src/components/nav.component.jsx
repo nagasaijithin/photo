@@ -139,10 +139,12 @@ const navAnimation = (nlwel, nlwulel, nlclel) => {
   );
 };
 const closeNavAnimation = (e, nlwel, nlwulel, nlclel) => {
+  e.persist();
   if (
     e.target.href ||
     e.target.title === "close" ||
-    e.target.type === "submit"
+    e.target.type === "submit" ||
+    e.target.src
   ) {
     let tl = new TimelineLite();
     tl.staggerTo(

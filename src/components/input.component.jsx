@@ -60,6 +60,7 @@ const Input = ({
       onSubmit={(e) => {
         e.persist();
         formHandler(e, setState);
+
         anitype && aniclose(e, nlwel, nlwulel, nlclel);
       }}
     >
