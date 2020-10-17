@@ -213,7 +213,7 @@ const NavBar = () => {
         </ul>
       </NavListWapper>
       <Nav>
-        <Link to="/">PhotoHub</Link>
+        <Link to="/">PhotosHub</Link>
         <SearchandhandelbarWapper>
           <Input type="search">
             <img src={search} alt="Search" />
