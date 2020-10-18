@@ -10,6 +10,10 @@ import history from "./history";
 import theme from "./style/themeprovider";
 import { GlobalStyle } from "./style/globalstyles";
 import * as serviceWorker from "./serviceWorker";
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('UA-166135822-3');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(
   <Provider store={store}>
